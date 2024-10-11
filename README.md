@@ -20,17 +20,17 @@ Para instalar este projeto, você precisará:
 
 Para executar o projeto, você precisará:
 
-  1- Executar o comando python manage.py migrate na pasta do projeto para criar as tabelas do banco de dados.<br>
-  2- Executar o comando python manage.py createsuperuser para criar um superuser.<br>
-  3- Executar o comando python manage.py runserver na pasta do projeto para iniciar o servidor.</br>
+1. Executar o comando python manage.py migrate na pasta do projeto para criar as tabelas do banco de dados.<br>
+2. Executar o comando python manage.py createsuperuser para criar um superuser.<br>
+3. Executar o comando python manage.py runserver na pasta do projeto para iniciar o servidor.</br>
 
 # Acessando o projeto
 
 Para acessar o projeto, você precisará:
 
-  1- Abrir um navegador e acessar a URL https://<ip do servidor>:8000/<br>
-  2- Fazer login com o usuário admin e senha admin (padrão do Django).<br>
-  3- Criar uma tarefa e verificar se ela foi criada com sucesso.<br>
+1. Abrir um navegador e acessar a URL https://<ip do servidor>:8000/<br>
+2. Fazer login com o usuário admin e senha admin (padrão do Django).<br>
+3. Criar uma tarefa e verificar se ela foi criada com sucesso.<br>
 
 # Documentação adicional
 Para saber mais sobre o Django, você pode acessar a documentação oficial em: https://docs.djangoproject.com/ 
