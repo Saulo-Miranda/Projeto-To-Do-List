@@ -7,7 +7,7 @@ Este é um projeto de To-Do List feito com Django. Ele apresenta as seguintes fu
     Marcação de tarefas como concluídas
     Listagem de tarefas
 
-Instalação
+# Instalação
 
 Para instalar este projeto, você precisará:
 
@@ -16,14 +16,14 @@ Para instalar este projeto, você precisará:
     Ter o pip instalado em sua máquina
     Executar o comando pip install -r requirements.txt na pasta do projeto
 
-Executando o projeto
+# Executando o projeto
 
 Para executar o projeto, você precisará:
  Executar o comando python manage.py migrate na pasta do projeto para criar as tabelas do banco de dados
     Executar o comando python manage.py createsuperuser para criar um superuser
     Executar o comando python manage.py runserver na pasta do projeto para iniciar o servidor
 
-Acessando o projeto
+# Acessando o projeto
 
 Para acessar o projeto, você precisará:
 
@@ -31,5 +31,5 @@ Para acessar o projeto, você precisará:
     Fazer login com o usuário admin e senha admin (padrão do Django)
     Criar uma tarefa e verificar se ela foi criada com sucesso
 
-Documentação adicional
+# Documentação adicional
 Para saber mais sobre o Django, você pode acessar a documentação oficial em https://docs.djangoproject.com/.
