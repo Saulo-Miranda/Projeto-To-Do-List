@@ -1,0 +1,475 @@
+{% block content %}
+{% load custom_tags %}
+<div class="card">
+    <div class="tools">
+      <div class="circle">
+        <span class="red box"></span>
+      </div>
+      <div class="circle">
+        <span class="yellow box"></span>
+      </div>
+      <div class="circle">
+        <span class="green box"></span>
+      </div>
+    </div>
+    <div class="card_content">
+        <form action="" method="post">
+            {% csrf_token %}
+            
+            <div class="input-container">
+              {{ form.nome_tarefa|add_class:"input" }}
+            </div>
+        
+            <button class="mover"> CADASTRAR
+            </button>
+        </form>
+    </div>
+  </div>
+<style>
+/*entrada do texto*/
+    .input {
+  margin-top: 50px;
+  width: 100%;
+  max-width: 270px;
+  height: 60px;
+  padding: 12px;
+  font-size: 18px;
+  font-family: "Courier New", monospace;
+  color: #000;
+  background-color: #fff;
+  border: 4px solid #000;
+  border-radius: 0;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 8px 8px 0 #000;
+}
+
+.input::placeholder {
+  color: #888;
+}
+
+.input:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0 #000;
+}
+
+.input:focus {
+  background-color: #000;
+  color: #fff;
+  border-color: #ffffff;
+}
+
+.input:focus::placeholder {
+  color: #fff;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.input:focus::after {
+  content: "|";
+  position: absolute;
+  right: 10px;
+  animation: blink 0.7s step-end infinite;
+}
+
+.input:valid {
+  animation: typing 2s steps(30, end);
+}
+.input-container {
+  position: relative;
+  width: 100%;
+  max-width: 270px;
+}
+
+.input {
+  width: 100%;
+  height: 60px;
+  padding: 12px;
+  font-size: 18px;
+  font-family: "Courier New", monospace;
+  color: #000;
+  background-color: #fff;
+  border: 4px solid #000;
+  border-radius: 0;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 8px 8px 0 #000;
+}
+
+.input::placeholder {
+  color: #888;
+}
+
+.input:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0 #000;
+}
+
+.input:focus {
+  background-color: #010101;
+  color: #fff;
+  border-color: #d6d9dd;
+}
+
+.input:focus::placeholder {
+  color: #fff;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px) rotate(-5deg);
+  }
+  50% {
+    transform: translateX(5px) rotate(5deg);
+  }
+  75% {
+    transform: translateX(-5px) rotate(-5deg);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.input:focus {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes glitch {
+  0% {
+    transform: none;
+    opacity: 1;
+  }
+  7% {
+    transform: skew(-0.5deg, -0.9deg);
+    opacity: 0.75;
+  }
+  10% {
+    transform: none;
+    opacity: 1;
+  }
+  27% {
+    transform: none;
+    opacity: 1;
+  }
+  30% {
+    transform: skew(0.8deg, -0.1deg);
+    opacity: 0.75;
+  }
+  35% {
+    transform: none;
+    opacity: 1;
+  }
+  52% {
+    transform: none;
+    opacity: 1;
+  }
+  55% {
+    transform: skew(-1deg, 0.2deg);
+    opacity: 0.75;
+  }
+  50% {
+    transform: none;
+    opacity: 1;
+  }
+  72% {
+    transform: none;
+    opacity: 1;
+  }
+  75% {
+    transform: skew(0.4deg, 1deg);
+    opacity: 0.75;
+  }
+  80% {
+    transform: none;
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.input:not(:placeholder-shown) {
+    animation: none; 
+  transform: none; 
+  box-shadow: 8px 8px 0 #000; 
+}
+
+.input-container::after {
+  content: "|";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #000;
+  animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.input:focus + .input-container::after {
+  color: #fff;
+}
+
+.input:not(:placeholder-shown) {
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0px 0px 0 #000;
+}
+/*card*/
+html, body {
+   height: 100%;
+   margin: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+  }
+
+.card {
+ width: 390px;
+ height: 254px;
+ margin: 0 auto;
+ background-color: #161616;
+ border-radius: 8px;
+ z-index: 1;
+}
+.card_content{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.tools {
+ display: flex;
+ align-items: center;
+ padding: 9px;
+}
+
+.circle {
+ padding: 0 4px;
+}
+
+.box {
+ display: inline-block;
+ align-items: center;
+ width: 10px;
+ height: 10px;
+ padding: 1px;
+ border-radius: 50%;
+}
+
+.red {
+ background-color: #ff605c;
+}
+
+.yellow {
+ background-color: #ffbd44;
+}
+
+.green {
+ background-color: #00ca4e;
+}
+/*butao*/
+button,
+button::after {
+ font-size: 18px;
+ background: linear-gradient(45deg, transparent 5%, #000000 5%);
+ border: 0;
+ color: #fff;
+ letter-spacing: 3px;
+ line-height: 1;
+ box-shadow: 6px 0px 0px #f50404;
+ outline: transparent;
+ position: absolute;
+}
+.mover{
+    margin-top: 15px;
+    margin-left: 50px;
+}
+button::after {
+ --slice-0: inset(50% 50% 50% 50%);
+ --slice-1: inset(80% -6px 0 0);
+ --slice-2: inset(50% -6px 30% 0);
+ --slice-3: inset(10% -6px 85% 0);
+ --slice-4: inset(40% -6px 43% 0);
+ --slice-5: inset(80% -6px 5% 0);
+ content: "CADASTRAR";
+ display: block;
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background: linear-gradient(45deg, transparent 3%, #000000 3%, #00e6f6 5%, #ff013c 5%);
+ text-shadow: -3px -3px 0px #f8f005, 3px 3px 0px #00e6f6;
+ clip-path: var(--slice-0);
+}
+
+button:hover::after {
+ animation: 1s glitch;
+ animation-timing-function: steps(2, end);
+}
+
+@keyframes glitch {
+ 0% {
+  clip-path: var(--slice-1);
+  transform: translate(-20px, -10px);
+ }
+
+ 10% {
+  clip-path: var(--slice-3);
+  transform: translate(10px, 10px);
+ }
+
+ 20% {
+  clip-path: var(--slice-1);
+  transform: translate(-10px, 10px);
+ }
+
+ 30% {
+  clip-path: var(--slice-3);
+  transform: translate(0px, 5px);
+ }
+
+ 40% {
+  clip-path: var(--slice-2);
+  transform: translate(-5px, 0px);
+ }
+
+ 50% {
+  clip-path: var(--slice-3);
+  transform: translate(5px, 0px);
+ }
+
+ 60% {
+  clip-path: var(--slice-4);
+  transform: translate(5px, 10px);
+ }
+
+ 70% {
+  clip-path: var(--slice-2);
+  transform: translate(-10px, 10px);
+ }
+
+ 80% {
+  clip-path: var(--slice-5);
+  transform: translate(20px, -10px);
+ }
+
+ 90% {
+  clip-path: var(--slice-1);
+  transform: translate(-10px, 0px);
+ }
+
+ 100% {
+  clip-path: var(--slice-1);
+  transform: translate(0);
+ }
+}
+
+</style>
+{% endblock %}
+</div>
+</div>
+<div class="toggle-switch">
+  <label class="switch-label">
+    <input type="checkbox" class="checkbox" id="toggle-background" onclick="mudarCorFundo()">
+    <span class="slider"></span>
+  </label>
+</div>
+
+<script>
+  function mudarCorFundo() {
+    // Obtém o checkbox
+    const checkbox = document.getElementById('toggle-background');
+
+    // Verifica se está marcado (checked) e muda a cor de fundo
+    if (checkbox.checked) {
+      document.body.style.backgroundColor = 'white'; 
+    } else {
+      document.body.style.backgroundColor = '#262626'
+    }
+  }
+</script>
+<style>
+  
+/*Fundo do site*/
+body {
+  background-color:#262626; /* Cor inicial do fundo */
+  transition: background-color 0.5s ease; /* Transição suave */
+}
+.toggle-switch {
+  position: absolute; /* Posiciona o botão de forma absoluta */
+  right: 20px; /* Ajusta a distância do lado direito */
+  top: 20px; /* Ajusta a distância do topo da página */
+  width: 100px;
+  height: 50px;
+  --light: #d8dbe0; /* Cor clara (cinza) */
+  --dark: #000000;  /* Cor escura (preto) */
+}
+
+.switch-label {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  background-color: var(--dark);
+  border-radius: 29px;
+  cursor: pointer;
+  border: 3px solid var(--dark);
+}
+
+.checkbox {
+  position: absolute;
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.checkbox:checked ~ .slider {
+  background-color: var(--light); /* Muda a cor da área do toggle */
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  box-shadow: inset 12px -4px 0px 0px var(--light);
+  background-color: var(--dark);
+  transition: 0.3s;
+}
+
+.checkbox:checked ~ .slider::before {
+  transform: translateX(50px);
+  background-color: var(--dark); /* Cor da "bolinha" */
+  box-shadow: none;
+}
+</style>

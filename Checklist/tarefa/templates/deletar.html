@@ -1,0 +1,370 @@
+{% block content %}
+<div class="card">
+    <div class="container">
+      <div class="left">
+        <div class="status-ind"></div>
+      </div>
+      <div class="right">
+        <div class="text-wrap">
+          <p class="text-content">
+             Deletar tarefa
+          </p>
+          <p class="time"><strong>Tem certeza que deseja deletar a tarefa "{{ object.nome_tarefa }}"?</p>
+        </div>
+        {% csrf_token %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="button-wrap">
+                <a class="cor" href="{% url 'lista'%}" style="text-decoration: none;">
+                    Cancelar
+                </a>
+                <button class="button" type="submit">
+                    <span class="button__text">Delete</span>
+                    <span class="button__icon"><svg class="svg" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><title></title><path d="M112,112l20,320c.95,18.49,14.4,32,32,32H348c17.67,0,30.87-13.51,32-32l20-320" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path><line style="stroke:#fff;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" x1="80" x2="432" y1="112" y2="112"></line><path d="M192,112V72h0a23.93,23.93,0,0,1,24-24h80a23.93,23.93,0,0,1,24,24h0v40" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path><line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="256" x2="256" y1="176" y2="400"></line><line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="184" x2="192" y1="176" y2="400"></line><line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="328" x2="320" y1="176" y2="400"></line></svg></span>
+                  </button>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>
+<style>
+html, body {
+   height: 100%;
+   margin: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+  }
+.card {
+  width: fit-content;
+  background-color: #1e1e1e;
+  border-radius: 0.75em;
+  cursor: pointer;
+  transition: ease 0.2s;
+  box-shadow:
+    1em 1em 1em rgba(0, 0, 0, 0.2),
+    -0.75em -0.75em 1em rgba(255, 255, 255, 0.05);
+  border: 1.5px solid #2a2a2a;
+}
+
+.card:hover {
+  background-color: #2a2a2a;
+  border: 1.5px solid #3a8bff;
+}
+
+.container {
+  margin-top: 1.25em;
+  margin-bottom: 1.375em;
+  margin-left: 1.375em;
+  margin-right: 2em;
+  display: flex;
+  flex-direction: row;
+  gap: 0.75em;
+}
+
+.status-ind {
+  width: 0.625em;
+  height: 0.625em;
+  background-color: #ff3333;
+  margin: 0.375em 0;
+  border-radius: 0.5em;
+}
+.text-content{
+    font-size: larger;
+    color: yellow;
+}
+.text-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  color: #e0e0e0;
+  font-size: 1.5em;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.time {
+  font-size: 0.875em;
+  color: #dfdddd;
+}
+
+.text-link {
+  font-weight: 500;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.button-wrap {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: center;
+}
+
+.secondary-cta {
+  background-color: transparent;
+  border: none;
+  font-size: 15px;
+  font-weight: 400;
+  color: #ff1c1c;
+  cursor: pointer;
+}
+
+.primary-cta {
+  font-size: 15px;
+  background-color: transparent;
+  font-weight: 600;
+  color: #3a8bff;
+  border: none;
+  border-radius: 1.5em;
+  cursor: pointer;
+}
+
+button:hover {
+  text-decoration: underline;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875em;
+}
+/*primeiro butao*/
+.button {
+  position: relative;
+  width: 150px;
+  height: 37px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid #cc0000;
+  background-color: #e50000;
+  overflow: hidden;
+}
+
+.button, .button__icon, .button__text {
+  transition: all 0.3s;
+}
+
+.button .button__text {
+  transform: translateX(35px);
+  color: #fff;
+  font-weight: 600;
+}
+
+.button .button__icon {
+  position: absolute;
+  transform: translateX(109px);
+  height: 100%;
+  width: 39px;
+  background-color: #cc0000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button .svg {
+  width: 20px;
+}
+
+.button:hover {
+  background: #cc0000;
+}
+
+.button:hover .button__text {
+  color: transparent;
+}
+
+.button:hover .button__icon {
+  width: 148px;
+  transform: translateX(0);
+}
+
+.button:active .button__icon {
+  background-color: #b20000;
+}
+
+.button:active {
+  border: 1px solid #b20000;
+}
+/*butao*/
+.cor{
+  font-size: 13px;
+  position: relative;
+  padding: 10px 22px;
+  border-radius: 0px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  background-color: #2c39e9;
+  transition: all 0.2s ease;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.cor:active {
+  transform: scale(0.96);
+}
+
+.cor:before,
+.cor:after {
+  position: absolute;
+  content: "";
+  width: 150%;
+  left: 50%;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: -1000;
+  background-repeat: no-repeat;
+}
+
+.cor:hover:before {
+  top: -70%;
+  background-image: radial-gradient(circle, #0011ff 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, #0011ff  20%, transparent 30%),
+    radial-gradient(circle, #0011ff  20%, transparent 20%),
+    radial-gradient(circle, #0011ff  20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #0011ff  15%, transparent 20%),
+    radial-gradient(circle, #0011ff  20%, transparent 20%),
+    radial-gradient(circle, #0011ff  20%, transparent 20%),
+    radial-gradient(circle, #0011ff  20%, transparent 20%),
+    radial-gradient(circle, #0011ff  20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+    10% 10%, 18% 18%;
+  background-position: 50% 120%;
+  animation: greentopBubbles 0.6s ease;
+}
+
+@keyframes greentopBubbles {
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+      40% 90%, 55% 90%, 70% 90%;
+  }
+
+  50% {
+    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+      50% 50%, 65% 20%, 90% 30%;
+  }
+
+  100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+      50% 40%, 65% 10%, 90% 20%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+
+.cor:hover::after {
+  bottom: -70%;
+  background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+  background-position: 50% 0%;
+  animation: greenbottomBubbles 0.6s ease;
+}
+
+@keyframes greenbottomBubbles {
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+      70% -10%, 70% 0%;
+  }
+
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+      105% 0%;
+  }
+
+  100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+      110% 10%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+</style>
+{% endblock %}
+</div>
+</div>
+<div class="toggle-switch">
+  <label class="switch-label">
+    <input type="checkbox" class="checkbox" id="toggle-background" onclick="mudarCorFundo()">
+    <span class="slider"></span>
+  </label>
+</div>
+
+<script>
+  function mudarCorFundo() {
+    // Obtém o checkbox
+    const checkbox = document.getElementById('toggle-background');
+
+    // Verifica se está marcado (checked) e muda a cor de fundo
+    if (checkbox.checked) {
+      document.body.style.backgroundColor = 'white'; 
+    } else {
+      document.body.style.backgroundColor = '#262626'
+    }
+  }
+</script>
+<style>
+  
+/*Fundo do site*/
+body {
+  background-color:#262626; /* Cor inicial do fundo */
+  transition: background-color 0.5s ease; /* Transição suave */
+}
+.toggle-switch {
+  position: absolute; /* Posiciona o botão de forma absoluta */
+  right: 20px; /* Ajusta a distância do lado direito */
+  top: 20px; /* Ajusta a distância do topo da página */
+  width: 100px;
+  height: 50px;
+  --light: #d8dbe0; /* Cor clara (cinza) */
+  --dark: #000000;  /* Cor escura (preto) */
+}
+
+.switch-label {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  background-color: var(--dark);
+  border-radius: 29px;
+  cursor: pointer;
+  border: 3px solid var(--dark);
+}
+
+.checkbox {
+  position: absolute;
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.checkbox:checked ~ .slider {
+  background-color: var(--light); /* Muda a cor da área do toggle */
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  box-shadow: inset 12px -4px 0px 0px var(--light);
+  background-color: var(--dark);
+  transition: 0.3s;
+}
+
+.checkbox:checked ~ .slider::before {
+  transform: translateX(50px);
+  background-color: var(--dark); /* Cor da "bolinha" */
+  box-shadow: none;
+}
+</style>
