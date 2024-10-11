@@ -1,6 +1,6 @@
 # To-Do List
 
-### Este é um projeto de To-Do List feito com Django. Ele apresenta as seguintes funcionalidades:
+<strong> Este é um projeto de To-Do List feito com Django. Ele apresenta as seguintes funcionalidades:
 
 * Criação de tarefas.<br>
 * Edição de tarefas.<br>
