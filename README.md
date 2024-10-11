@@ -6,8 +6,6 @@ Este é um projeto de To-Do List feito com Django. Ele apresenta as seguintes fu
     Edição de tarefas
     Marcação de tarefas como concluídas
     Listagem de tarefas
-    Detalhes de tarefas
-    Autenticação de usuários
 
 Instalação
 
