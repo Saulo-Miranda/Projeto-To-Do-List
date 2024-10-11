@@ -11,10 +11,10 @@ Listagem de tarefas.
 
 Para instalar este projeto, você precisará:
 
-1- Ter o Python 3.7 ou superior instalado em sua máquina.<br></br>
+1- Ter o Python 3.7 ou superior instalado em sua máquina.<br>
 2- Ter o Django 5.1 ou superior instalado em sua máquina.
 Ter o pip instalado em sua máquina.
-Executar o comando pip install -r requirements.txt na pasta do projeto.
+Executar o comando pip install -r requirements.txt na pasta do projeto.</br>
 
 # Executando o projeto
 
